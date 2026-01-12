@@ -1,7 +1,6 @@
 untyped
 global function trans_Init
 
-global function testLocalHttp_GET
 global function libreServer
 global function translateFromTo
 global function sayIn
@@ -13,31 +12,9 @@ void function debugPrint( string text ){
     printt( "\x1b[38;2;128;111;143m[trans] \x1b[0m" + text )
 }
 
-void function debugPrintKillfeed( string text ){
-    Obituary_Print_Localized( "`0" + text + " `1[trans]", <128, 111, 143>, <255, 255, 255>, <255, 255, 255>, <0, 0, 0>, 1.0 )
-}
-
 void function trans_Init(){
     AddCallback_OnReceivedSayTextMessage( chathook )
     debugPrint( "Initialized! :-)" )
-}
-
-void function testLocalHttp_GET(){
-    HttpRequest request
-    request.method = HttpRequestMethod.GET
-    request.url = URL_LISTENER
-    //request.queryParameters[ "id" ] <- [ id.tostring() ]
-
-    void functionref( HttpRequestResponse ) onSuccess = void function ( HttpRequestResponse response ) : (){
-        printt( "Success!" )
-        printt( response.body )
-    }
-
-    void functionref( HttpRequestFailure ) onFailure = void function ( HttpRequestFailure failure ) : (){
-        print( "Fail!!" )
-    }
-
-    NSHttpRequest( request, onSuccess, onFailure )
 }
 
 void function libreServer( string operation ){
@@ -47,9 +24,9 @@ void function libreServer( string operation ){
 
     if( operation == "start" ){
         // https://docs.libretranslate.com/guides/installation/#arguments
-        request.queryParameters[ "load-only" ]        <- [ "en,ru,de" ]
+        request.queryParameters[ "load-only" ]        <- [ "en,ru,de" ] // Add more languages if you so please
         // request.queryParameters[ "frontend-timeout" ] <- [ "500" ]
-        request.queryParameters[ "threads" ]          <- [ "4" ]
+        request.queryParameters[ "threads" ]          <- [ "16" ]
     }
 
     void functionref( HttpRequestResponse ) onSuccess = void function ( HttpRequestResponse response ) : (){

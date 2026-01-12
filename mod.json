@@ -10,20 +10,7 @@
             "ClientCallback": {
 				"Before": "trans_Init"
 			}
-		},
-		{
-			"Path": "transSettings.nut",
-			"RunOn": "UI",
-			"UICallback": {
-				"Before": "transSettings_Init"
-			}
 		}
 	],
-	"ConVars": [
-		{
-			"Name": "cv_trans_enabled",
-			"DefaultValue": "1",
-			"Flags": 16777216
-		}
-	]
+	"ConVars": []
 }
