@@ -97,7 +97,10 @@ def start_listener():
 # http://127.0.0.1:3333
 def start_libre(args=["--load-only","en,de"]):
     global current_proc
-    cmd = ["libretranslate", "--port", "3333"] + args
+    try:
+        cmd = ["libretranslate", "--port", "3333"] + args
+    except FileNotFoundError:
+        print('libretranslate is not installed!')
     with proc_lock:
         if current_proc and current_proc.poll() is None:
             return
