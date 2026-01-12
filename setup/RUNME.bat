@@ -9,7 +9,7 @@ python --version >nul 2>&1 || (
 python -m pip install -r requirements.txt
 
 cls 
-echo Finished downloading libretranslate
+echo Finished downloading requirements (libretranslate, pyinstaller)
 echo You can close this window and delete the file
 echo:
 

@@ -151,7 +151,7 @@ def launch_game():
         return False
 
 def main():
-    # if launch_game():
+    if launch_game():
         threading.Thread(target=start_listener).start()
     
 if __name__ == '__main__':
